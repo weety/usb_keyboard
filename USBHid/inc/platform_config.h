@@ -45,7 +45,7 @@
  #if defined (USE_STM3210B_EVAL)
 //  #include "stm3210b_eval.h"
  #elif defined (USE_STM3210E_EVAL)
-  #include "stm3210e_eval.h"
+//  #include "stm3210e_eval.h"
  #else
   #error "Missing define: USE_STM3210B_EVAL, USE_STM3210E_EVAL"
  #endif /* USE_STM3210B_EVAL */

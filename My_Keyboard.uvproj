@@ -349,7 +349,7 @@
             <uSurpInc>0</uSurpInc>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_STDPERIPH_DRIVER, STM32F10X_MD, USE_STM3210B_EVAL</Define>
+              <Define>USE_STDPERIPH_DRIVER, STM32F10X_MD, USE_STM3210E_EVAL</Define>
               <Undefine></Undefine>
               <IncludePath>.\CMSIS;.\startup;.\USBHid\inc;.\USBLib\inc;.\user;.\STM32F10x_StdPeriph_Driver\inc</IncludePath>
             </VariousControls>

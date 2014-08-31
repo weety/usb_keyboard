@@ -22,7 +22,7 @@
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 __IO uint8_t PrevXferComplete = 1;
-INT8U key_flag = 0xf0;
+INT8U key_flag = 0xe0;
 INT8U flag = 0;
 ADXL345_TYPE ADXL345_data;
 INT8U Send_Buffer[8] = {0, 0, 0, 0, 0, 0, 0, 0};
@@ -90,17 +90,17 @@ void System_Init(void)
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB
 							,ENABLE);
 	/* Configure KEY pins*/
-  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15;
+  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7 | GPIO_Pin_15;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	/*设置为带上拉输入*/
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
   GPIO_Init(GPIOB, &GPIO_InitStructure);
 
 	/*I2C引脚初始化*/
-	I2C_GPIOInit();
+	//I2C_GPIOInit();
 	
 	/*加速度传感器的初始化*/
-	ADXL345_Init();
+	//ADXL345_Init();
 	
 	/*定时器的初始化*/
 	TIM3_Init();
@@ -115,7 +115,8 @@ void Key_Handler(void)
 	float tempX,tempY,tempZ;
 	//float roll,pitch,yaw;
 	INT8S roll,pitch;
-	
+
+#if 0	
     
 	//temp=(float)dis_data*3.9;  //计算数据和显示,查考ADXL345快速入门第4页
   tempX = (float)ADXL345_data.ax * 0.0039;
@@ -153,10 +154,26 @@ void Key_Handler(void)
 	if((key_flag & 0x20) == 0x00) //检测是否要松开Keyboard UpArrow
 		Send_Buffer[2] = 0x00;
 	
-	if(key_flag & 0x10) //检测是否按下Ctrl键
+	/*if(key_flag & 0x10) //检测是否按下Ctrl键
 		Send_Buffer[0] &= 0xfe;
 	else
-		Send_Buffer[0] |= 0x01;
+		Send_Buffer[0] |= 0x01;*/
+#else
+	if((key_flag & 0x80) == 0x00) //检测Keyboard UpArrow是否按下
+		Send_Buffer[2] = 0x52;
+	else
+		Send_Buffer[2] = 0x00; 
+	
+	if((key_flag & 0x40) == 0x00) //检测Keyboard LeftArrow是否按下
+		Send_Buffer[3] = 0x50;
+	else
+		Send_Buffer[3] = 0x00;
+	
+	if((key_flag & 0x20) == 0x00) //检测Keyboard RightArrow是否按下
+		Send_Buffer[3] = 0x4f;
+	else
+		Send_Buffer[3] = 0x00;
+#endif
 }
 
 #ifdef  USE_FULL_ASSERT

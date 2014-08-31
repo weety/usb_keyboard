@@ -43,9 +43,9 @@
 /* Private variables ---------------------------------------------------------*/
 INT32U key_count = 0;
 	/*保存当前按键端口状态*/
-__IO INT8U key1 = 0xf0;
+__IO INT8U key1 = 0xe0;
 	/*保存上一状态按键端口状态*/
-__IO INT8U key2 = 0xf0;
+__IO INT8U key2 = 0xe0;
 /* Extern variables ----------------------------------------------------------*/
 extern INT8U flag;
 extern INT8U key_flag;
@@ -240,14 +240,15 @@ void TIM3_IRQHandler(void)
 	INT16U key = 0;
 	
 	/*连续读取陀螺仪的数值*/
-	ADXL345_MultRead(&ADXL345_data);
+	//ADXL345_MultRead(&ADXL345_data);
 	
 	/*读按键端口值*/
 	key = GPIO_ReadInputData(GPIOB);
 	
-	key1 = (INT8U) (key >> 8);
+	//key1 = (INT8U) (key >> 8);
+	key1 = (INT8U)key;
 	
-	key1 &= 0xf0;
+	key1 &= 0xe0;
 	
 	
 	/*表示按键发现了改变*/
