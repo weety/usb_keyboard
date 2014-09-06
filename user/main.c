@@ -170,9 +170,9 @@ void Key_Handler(void)
 		Send_Buffer[3] = 0x00;
 	
 	if((key_flag & 0x20) == 0x00) //ºÏ≤‚Keyboard RightArrow «∑Ò∞¥œ¬
-		Send_Buffer[3] = 0x4f;
+		Send_Buffer[4] = 0x4f;
 	else
-		Send_Buffer[3] = 0x00;
+		Send_Buffer[4] = 0x00;
 #endif
 }
 
