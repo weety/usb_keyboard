@@ -56,8 +56,7 @@ void detect_rotary(void)
 
 	/* 连续读取旋钮编码器端口 */
 	rotary = GPIO_ReadInputData(GPIOA);
-	
-	//key1 = (INT8U) (key >> 8);
+
 	rotary1= (INT8U)rotary;
 	
 	rotary1 &= 0xfc;
@@ -79,6 +78,7 @@ void detect_rotary(void)
 				rdata.rotary_curr = rotary1;
 				rotary_count = 0;
 				//rotary_flag = rotary1;
+				rotary_detect_flag = 1;
 			}
 		}
 		else
@@ -95,11 +95,12 @@ void detect_rotary(void)
 				rdata.rotary_prev = rdata.rotary_curr;
 				rdata.rotary_curr = rotary1;
 				rotary_count = 0;
+				rotary_detect_flag = 1;
 			}
 		}
 		
 		/*设置标志*/
-		rotary_detect_flag = 1;
+		//rotary_detect_flag = 1;
 	}
 	else
 	{
