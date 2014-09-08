@@ -16,16 +16,24 @@
 #include <math.h>
 #include <stdio.h>
 #include "USART.h"
+#include "rotary_encoder.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 __IO uint8_t PrevXferComplete = 1;
-INT8U key_flag = 0xe0;
+INT8U key_flag = 0x41;
 INT8U flag = 0;
-ADXL345_TYPE ADXL345_data;
+
+extern INT8U rotary_detect_flag;
+extern INT8S rotary_dir[4][4];
+extern INT8U rotary_dir_flag[3];
+extern struct rotary_data rdata;
+
+
 INT8U Send_Buffer[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+
 
 /* Extern variables ----------------------------------------------------------*/
 /* Private function prototypes -----------------------------------------------*/
@@ -44,7 +52,7 @@ int main(void)
 {
   Set_System();
 	
-	System_Init();
+  System_Init();
   
   USB_Interrupts_Config();
   
@@ -56,12 +64,13 @@ int main(void)
   {
     if (bDeviceState == CONFIGURED)
     {
-      if(PrevXferComplete && flag)
+      if(PrevXferComplete && (flag | rotary_detect_flag))
       {
 				
 				Key_Handler();
 				
 				flag = 0;
+				rotary_detect_flag = 0;
 				
 				/* Reset the control token to inform upper layer that a transfer is ongoing */
 				PrevXferComplete = 0;
@@ -85,12 +94,23 @@ void System_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 
+	 /*按键GPIO配置*/
+	/*使能端口A的时钟*/
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA
+							,ENABLE);
+	/* Configure rotary pins*/
+  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_2 | GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7 ;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	/*设置为带上拉输入*/
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);
+
   /*按键GPIO配置*/
 	/*使能端口B的时钟*/
   RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB
 							,ENABLE);
 	/* Configure KEY pins*/
-  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_5 | GPIO_Pin_6 | GPIO_Pin_7 | GPIO_Pin_15;
+  GPIO_InitStructure.GPIO_Pin =  GPIO_Pin_0 | GPIO_Pin_6;
   GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	/*设置为带上拉输入*/
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
@@ -159,20 +179,45 @@ void Key_Handler(void)
 	else
 		Send_Buffer[0] |= 0x01;*/
 #else
-	if((key_flag & 0x80) == 0x00) //检测Keyboard UpArrow是否按下
-		Send_Buffer[2] = 0x52;
+	if((key_flag & 0x40) == 0x00) //检测Keyboard PgUp是否按下
+		Send_Buffer[2] = 0x4B;
 	else
 		Send_Buffer[2] = 0x00; 
 	
-	if((key_flag & 0x40) == 0x00) //检测Keyboard LeftArrow是否按下
-		Send_Buffer[3] = 0x50;
+	if((key_flag & 0x01) == 0x00) //检测Keyboard PgDn是否按下
+		Send_Buffer[3] = 0x4E;
 	else
 		Send_Buffer[3] = 0x00;
 	
-	if((key_flag & 0x20) == 0x00) //检测Keyboard RightArrow是否按下
+	/*if((key_flag & 0x20) == 0x00) //检测Keyboard RightArrow是否按下
 		Send_Buffer[4] = 0x4f;
 	else
+		Send_Buffer[4] = 0x00;*/
+
+	rotary_dir_flag[0] = rotary_dir[(rdata.rotary_curr & 0x0c) >> 2][(rdata.rotary_prev & 0x0c) >> 2];
+	rotary_dir_flag[1] = rotary_dir[(rdata.rotary_curr & 0x30) >> 4][(rdata.rotary_prev & 0x30) >> 4];
+	rotary_dir_flag[2] = rotary_dir[(rdata.rotary_curr & 0xc0) >> 6][(rdata.rotary_prev & 0xc0) >> 6];
+
+	if (rotary_dir_flag[0] == ROTARY_DIR_F)
+		Send_Buffer[4] = 0x4f;
+	else if (rotary_dir_flag[0] == ROTARY_DIR_B)
+		Send_Buffer[4] = 0x50;
+	else
 		Send_Buffer[4] = 0x00;
+
+	if (rotary_dir_flag[1] == ROTARY_DIR_F)
+		Send_Buffer[5] = 0x57;
+	else if (rotary_dir_flag[1] == ROTARY_DIR_B)
+		Send_Buffer[5] = 0x56;
+	else
+		Send_Buffer[5] = 0x00;
+
+	if (rotary_dir_flag[2] == ROTARY_DIR_F)
+		Send_Buffer[6] = 0x60;
+	else if (rotary_dir_flag[2] == ROTARY_DIR_B)
+		Send_Buffer[6] = 0x5A;
+	else
+		Send_Buffer[6] = 0x00;
 #endif
 }
 

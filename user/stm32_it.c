@@ -43,13 +43,16 @@
 /* Private variables ---------------------------------------------------------*/
 INT32U key_count = 0;
 	/*保存当前按键端口状态*/
-__IO INT8U key1 = 0xe0;
+__IO INT8U key1 = 0x41;
 	/*保存上一状态按键端口状态*/
-__IO INT8U key2 = 0xe0;
+__IO INT8U key2 = 0x41;
+
 /* Extern variables ----------------------------------------------------------*/
 extern INT8U flag;
 extern INT8U key_flag;
-extern ADXL345_TYPE ADXL345_data;
+
+extern void detect_rotary(void);
+
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -248,7 +251,7 @@ void TIM3_IRQHandler(void)
 	//key1 = (INT8U) (key >> 8);
 	key1 = (INT8U)key;
 	
-	key1 &= 0xe0;
+	key1 &= 0x41;
 	
 	
 	/*表示按键发现了改变*/
@@ -268,6 +271,8 @@ void TIM3_IRQHandler(void)
 	
 	/*设置标志*/
 	flag = 1;
+
+	detect_rotary();
 	
 	/*手动清数据更新中断标志*/
 	TIM_ClearFlag(TIM3, TIM_FLAG_Update);
