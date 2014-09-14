@@ -262,6 +262,7 @@ void TIM3_IRQHandler(void)
 		{
 			key2 = key1;
 			key_flag = key2;
+			flag = 1;
 		}
 	}
 	else
@@ -270,7 +271,7 @@ void TIM3_IRQHandler(void)
 	}
 	
 	/*…Ë÷√±Í÷æ*/
-	flag = 1;
+	//flag = 1;
 
 	detect_rotary();
 	

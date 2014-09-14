@@ -23,7 +23,42 @@ INT8U rotary_detect_flag = 0;
 struct rotary_data rdata = {0};
 
 
-INT8U rotary_dir_flag[3] = {ROTARY_DIR_NONE, ROTARY_DIR_NONE, ROTARY_DIR_NONE};
+INT8S rotary_hdir_flag[32] = {ROTARY_DIR_NONE, ROTARY_DIR_NONE, ROTARY_DIR_NONE};
+INT8S rotary_zdir_flag[32] = {ROTARY_DIR_NONE, ROTARY_DIR_NONE, ROTARY_DIR_NONE};
+INT8S rotary_vdir_flag[32] = {ROTARY_DIR_NONE, ROTARY_DIR_NONE, ROTARY_DIR_NONE};
+static INT8U read_idx = 0, write_idx = 0;
+
+#define NEXT(a) ((a + 1) & (32 - 1))
+
+INT8S get_write_avalible()
+{
+	INT8U avalible;
+	if (write_idx >= read_idx)
+		avalible = 32 - (write_idx - read_idx) - 2;
+	else
+		avalible = read_idx - write_idx - 2;
+}
+
+INT8S get_read_avalible()
+{
+	INT8U avalible;
+	if (write_idx >= read_idx)
+		avalible = write_idx - read_idx;
+	else
+		avalible = 32 - (read_idx - write_idx);
+}
+
+
+INT8U get_current_readidx()
+{
+	return read_idx;
+}
+
+void inc_read_idx()
+{
+	if (++read_idx == 32)
+		read_idx = 0;;
+}
 
 /* rotary button variables */
 INT32U rotary_count = 0;
@@ -74,15 +109,28 @@ void detect_rotary(void)
 				//rotary_dir_flag[2] = rotary_dir[(rotary1 & 0xc0) >> 6][(rotary2 & 0xc0) >> 6];
 				//rotary2 = rotary1;
 				//rotary_flag = rotary2;
+				
 				rdata.rotary_prev = rdata.rotary_curr;
 				rdata.rotary_curr = rotary1;
+				if (get_write_avalible() > 0)
+				{
+					rotary_hdir_flag[write_idx] = rotary_dir[(rdata.rotary_curr & 0x0c) >> 2][(rdata.rotary_prev & 0x0c) >> 2];
+					rotary_zdir_flag[write_idx] = rotary_dir[(rdata.rotary_curr & 0x30) >> 4][(rdata.rotary_prev & 0x30) >> 4];
+					rotary_vdir_flag[write_idx] = rotary_dir[(rdata.rotary_curr & 0xc0) >> 6][(rdata.rotary_prev & 0xc0) >> 6];
+					write_idx = NEXT(write_idx);
+					rotary_hdir_flag[write_idx] = ROTARY_DIR_NONE;
+					rotary_zdir_flag[write_idx] = ROTARY_DIR_NONE;
+					rotary_vdir_flag[write_idx] = ROTARY_DIR_NONE;
+					write_idx = NEXT(write_idx);
+				}
 				rotary_count = 0;
 				//rotary_flag = rotary1;
-				rotary_detect_flag = 1;
+				//rotary_detect_flag = 1;
 			}
 		}
 		else
 		{
+		#if 0
 			rotary_count++; //相当于延时
 			if(rotary_count >= 0x03)
 			{
@@ -95,12 +143,14 @@ void detect_rotary(void)
 				rdata.rotary_prev = rdata.rotary_curr;
 				rdata.rotary_curr = rotary1;
 				rotary_count = 0;
-				rotary_detect_flag = 1;
+				//rotary_detect_flag = 1;
 			}
+		#endif
+			rotary_count = 0;
 		}
 		
 		/*设置标志*/
-		//rotary_detect_flag = 1;
+		rotary_detect_flag = 1;
 	}
 	else
 	{

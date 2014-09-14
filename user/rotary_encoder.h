@@ -15,6 +15,14 @@ struct rotary_data {
 
 /*º¯ÊıÉùÃ÷*/
 
+extern INT8S get_write_avalible();
+
+extern INT8S get_read_avalible();
+
+extern INT8U get_current_readidx();
+
+extern void inc_read_idx();
+
 extern void detect_rotary(void);
 
 

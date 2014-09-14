@@ -28,7 +28,11 @@ INT8U flag = 0;
 
 extern INT8U rotary_detect_flag;
 extern INT8S rotary_dir[4][4];
-extern INT8U rotary_dir_flag[3];
+//extern INT8U rotary_dir_flag[3];
+extern INT8S rotary_hdir_flag[32];
+extern INT8S rotary_zdir_flag[32];
+extern INT8S rotary_vdir_flag[32];
+
 extern struct rotary_data rdata;
 
 
@@ -64,7 +68,7 @@ int main(void)
   {
     if (bDeviceState == CONFIGURED)
     {
-      if(PrevXferComplete && (flag | rotary_detect_flag))
+      if(PrevXferComplete && (flag | (get_read_avalible() > 0)))
       {
 				
 				Key_Handler();
@@ -136,6 +140,8 @@ void Key_Handler(void)
 	//float roll,pitch,yaw;
 	INT8S roll,pitch;
 
+	INT8U ridx;
+
 #if 0	
     
 	//temp=(float)dis_data*3.9;  //计算数据和显示,查考ADXL345快速入门第4页
@@ -179,45 +185,63 @@ void Key_Handler(void)
 	else
 		Send_Buffer[0] |= 0x01;*/
 #else
-	if((key_flag & 0x40) == 0x00) //检测Keyboard PgUp是否按下
-		Send_Buffer[2] = 0x4B;
-	else
-		Send_Buffer[2] = 0x00; 
-	
-	if((key_flag & 0x01) == 0x00) //检测Keyboard PgDn是否按下
-		Send_Buffer[3] = 0x4E;
-	else
-		Send_Buffer[3] = 0x00;
+	if (flag)
+	{
+		if((key_flag & 0x40) == 0x00) //检测Keyboard PgUp是否按下
+			Send_Buffer[2] = 0x4B;
+		else
+			Send_Buffer[2] = 0x00; 
+		
+		if((key_flag & 0x01) == 0x00) //检测Keyboard PgDn是否按下
+			Send_Buffer[3] = 0x4E;
+		else
+			Send_Buffer[3] = 0x00;
+	}
 	
 	/*if((key_flag & 0x20) == 0x00) //检测Keyboard RightArrow是否按下
 		Send_Buffer[4] = 0x4f;
 	else
 		Send_Buffer[4] = 0x00;*/
 
-	rotary_dir_flag[0] = rotary_dir[(rdata.rotary_curr & 0x0c) >> 2][(rdata.rotary_prev & 0x0c) >> 2];
-	rotary_dir_flag[1] = rotary_dir[(rdata.rotary_curr & 0x30) >> 4][(rdata.rotary_prev & 0x30) >> 4];
-	rotary_dir_flag[2] = rotary_dir[(rdata.rotary_curr & 0xc0) >> 6][(rdata.rotary_prev & 0xc0) >> 6];
+	//rotary_dir_flag[0] = rotary_dir[(rdata.rotary_curr & 0x0c) >> 2][(rdata.rotary_prev & 0x0c) >> 2];
+	//rotary_dir_flag[1] = rotary_dir[(rdata.rotary_curr & 0x30) >> 4][(rdata.rotary_prev & 0x30) >> 4];
+	//rotary_dir_flag[2] = rotary_dir[(rdata.rotary_curr & 0xc0) >> 6][(rdata.rotary_prev & 0xc0) >> 6];
 
-	if (rotary_dir_flag[0] == ROTARY_DIR_F)
-		Send_Buffer[4] = 0x4f;
-	else if (rotary_dir_flag[0] == ROTARY_DIR_B)
-		Send_Buffer[4] = 0x50;
-	else
-		Send_Buffer[4] = 0x00;
+	if (rotary_detect_flag)
+	{
+		if (get_read_avalible() < 1)
+			return;
+		ridx = get_current_readidx();
+		/* keyboard LeftArrow and RightArrow */
+		if (rotary_hdir_flag[ridx] == ROTARY_DIR_F)
+			Send_Buffer[4] = 0x50;
+		else if (rotary_hdir_flag[ridx] == ROTARY_DIR_B)
+			Send_Buffer[4] = 0x4f;
+		else
+			Send_Buffer[4] = 0x00;
 
-	if (rotary_dir_flag[1] == ROTARY_DIR_F)
-		Send_Buffer[5] = 0x57;
-	else if (rotary_dir_flag[1] == ROTARY_DIR_B)
-		Send_Buffer[5] = 0x56;
-	else
-		Send_Buffer[5] = 0x00;
+		/* keyboard - and + */
+		if (rotary_zdir_flag[ridx] == ROTARY_DIR_F)
+			Send_Buffer[5] = 0x56;
+		else if (rotary_zdir_flag[ridx] == ROTARY_DIR_B)
+			Send_Buffer[5] = 0x57;
+		else
+			Send_Buffer[5] = 0x00;
 
-	if (rotary_dir_flag[2] == ROTARY_DIR_F)
-		Send_Buffer[6] = 0x60;
-	else if (rotary_dir_flag[2] == ROTARY_DIR_B)
-		Send_Buffer[6] = 0x5A;
-	else
-		Send_Buffer[6] = 0x00;
+		/* keyboard Down Arrow  and Up Arrow*/
+		if (rotary_vdir_flag[ridx] == ROTARY_DIR_F)
+			Send_Buffer[6] = 0x51;
+		else if (rotary_vdir_flag[ridx] == ROTARY_DIR_B)
+			Send_Buffer[6] = 0x52;
+		else
+			Send_Buffer[6] = 0x00;
+
+		rotary_hdir_flag[ridx] = ROTARY_DIR_NONE;
+		rotary_zdir_flag[ridx] = ROTARY_DIR_NONE;
+		rotary_vdir_flag[ridx] = ROTARY_DIR_NONE;
+
+		inc_read_idx();
+	}
 #endif
 }
 
