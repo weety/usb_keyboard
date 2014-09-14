@@ -82,11 +82,6 @@ INT8S rotary_dir[4][4] = {
 
 void detect_rotary(void)
 {
-	/*保存当前按键端口状态*/
-//  static	__IO INT8U key1 = 0xf0;
-	/*保存上一状态按键端口状态*/
-//	static	__IO INT8U key2 = 0xf0;
-	
 	INT16U rotary = 0;
 
 	/* 连续读取旋钮编码器端口 */
@@ -104,11 +99,6 @@ void detect_rotary(void)
 			rotary_count++; //相当于延时
 			if(rotary_count >= 0x03)
 			{
-				//rotary_dir_flag[0] = rotary_dir[(rotary1 & 0x0c) >> 2][(rotary2 & 0x0c) >> 2];
-				//rotary_dir_flag[1] = rotary_dir[(rotary1 & 0x30) >> 4][(rotary2 & 0x30) >> 4];
-				//rotary_dir_flag[2] = rotary_dir[(rotary1 & 0xc0) >> 6][(rotary2 & 0xc0) >> 6];
-				//rotary2 = rotary1;
-				//rotary_flag = rotary2;
 				
 				rdata.rotary_prev = rdata.rotary_curr;
 				rdata.rotary_curr = rotary1;

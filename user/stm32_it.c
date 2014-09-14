@@ -242,9 +242,6 @@ void TIM3_IRQHandler(void)
 	
 	INT16U key = 0;
 	
-	/*连续读取陀螺仪的数值*/
-	//ADXL345_MultRead(&ADXL345_data);
-	
 	/*读按键端口值*/
 	key = GPIO_ReadInputData(GPIOB);
 	

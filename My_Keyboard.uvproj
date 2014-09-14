@@ -558,14 +558,14 @@
               <FilePath>.\user\Timer3.c</FilePath>
             </File>
             <File>
-              <FileName>adxl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\user\adxl.c</FilePath>
-            </File>
-            <File>
               <FileName>I2C.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\user\I2C.c</FilePath>
+            </File>
+            <File>
+              <FileName>rotary_encoder.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\rotary_encoder.c</FilePath>
             </File>
           </Files>
         </Group>

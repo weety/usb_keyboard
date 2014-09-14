@@ -122,9 +122,7 @@ void System_Init(void)
 
 	/*I2C引脚初始化*/
 	//I2C_GPIOInit();
-	
-	/*加速度传感器的初始化*/
-	//ADXL345_Init();
+
 	
 	/*定时器的初始化*/
 	TIM3_Init();
@@ -136,55 +134,8 @@ void System_Init(void)
 */
 void Key_Handler(void)
 {
-	float tempX,tempY,tempZ;
-	//float roll,pitch,yaw;
-	INT8S roll,pitch;
-
 	INT8U ridx;
 
-#if 0	
-    
-	//temp=(float)dis_data*3.9;  //计算数据和显示,查考ADXL345快速入门第4页
-  tempX = (float)ADXL345_data.ax * 0.0039;
-  tempY = (float)ADXL345_data.ay * 0.0039;
-  tempZ = (float)ADXL345_data.az * 0.0039;
-	
-	//roll =  (float)(((atan2(tempZ,tempX)*180)/3.1416)-90); //x轴角度
-	//pitch = (float)(((atan2(tempZ,tempY)*180)/3.1416)-90); //y轴角度
-	//yaw =   (float)((atan2(tempX,tempY)*180)/3.1416);      //Z轴角度
-  roll =  (INT8S)(((atan2(tempZ,tempX)*180)/3.1416)-90); //x轴角度
-	pitch = (INT8S)(((atan2(tempZ,tempY)*180)/3.1416)-90); //y轴角度
-	
-	if(roll < -30)
-		Send_Buffer[2] = 0x52; //Keyboard UpArrow
-	else
-		Send_Buffer[2] = 0x00;
-	
-	if(pitch > 30)
-		Send_Buffer[3] = 0x50; //Keyboard LeftArrow
-	else if(pitch < -30)
-		Send_Buffer[3] = 0x4f; //Keyboard RightArrow
-	else
-		Send_Buffer[3] = 0x00;
-	
-	if(key_flag & 0x80) //检测R键是否按下
-		Send_Buffer[4] = 0x00;
-	else
-		Send_Buffer[4] = 0x15; 
-	
-	if(key_flag & 0x40) //检测Shift是否按下
-		Send_Buffer[0] &= 0xfd;
-	else
-		Send_Buffer[0] |= 0x02;
-	
-	if((key_flag & 0x20) == 0x00) //检测是否要松开Keyboard UpArrow
-		Send_Buffer[2] = 0x00;
-	
-	/*if(key_flag & 0x10) //检测是否按下Ctrl键
-		Send_Buffer[0] &= 0xfe;
-	else
-		Send_Buffer[0] |= 0x01;*/
-#else
 	if (flag)
 	{
 		if((key_flag & 0x40) == 0x00) //检测Keyboard PgUp是否按下
@@ -197,15 +148,6 @@ void Key_Handler(void)
 		else
 			Send_Buffer[3] = 0x00;
 	}
-	
-	/*if((key_flag & 0x20) == 0x00) //检测Keyboard RightArrow是否按下
-		Send_Buffer[4] = 0x4f;
-	else
-		Send_Buffer[4] = 0x00;*/
-
-	//rotary_dir_flag[0] = rotary_dir[(rdata.rotary_curr & 0x0c) >> 2][(rdata.rotary_prev & 0x0c) >> 2];
-	//rotary_dir_flag[1] = rotary_dir[(rdata.rotary_curr & 0x30) >> 4][(rdata.rotary_prev & 0x30) >> 4];
-	//rotary_dir_flag[2] = rotary_dir[(rdata.rotary_curr & 0xc0) >> 6][(rdata.rotary_prev & 0xc0) >> 6];
 
 	if (rotary_detect_flag)
 	{
@@ -242,7 +184,7 @@ void Key_Handler(void)
 
 		inc_read_idx();
 	}
-#endif
+
 }
 
 #ifdef  USE_FULL_ASSERT
