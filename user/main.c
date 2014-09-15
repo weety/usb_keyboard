@@ -138,13 +138,13 @@ void Key_Handler(void)
 
 	if (flag)
 	{
-		if((key_flag & 0x40) == 0x00) //检测Keyboard PgUp是否按下
-			Send_Buffer[2] = 0x4B;
+		if((key_flag & 0x40) == 0x00) //检测Keyboard N是否按下
+			Send_Buffer[2] = 0x11;
 		else
 			Send_Buffer[2] = 0x00; 
 		
-		if((key_flag & 0x01) == 0x00) //检测Keyboard PgDn是否按下
-			Send_Buffer[3] = 0x4E;
+		if((key_flag & 0x01) == 0x00) //检测Keyboard P是否按下
+			Send_Buffer[3] = 0x13;
 		else
 			Send_Buffer[3] = 0x00;
 	}
