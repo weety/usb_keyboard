@@ -162,11 +162,11 @@ void Key_Handler(void)
 		else
 			Send_Buffer[4] = 0x00;
 
-		/* keyboard - and + */
+		/* keyboard PgDn and PgUp */
 		if (rotary_zdir_flag[ridx] == ROTARY_DIR_F)
-			Send_Buffer[5] = 0x56;
+			Send_Buffer[5] = 0x4E;
 		else if (rotary_zdir_flag[ridx] == ROTARY_DIR_B)
-			Send_Buffer[5] = 0x57;
+			Send_Buffer[5] = 0x4B;
 		else
 			Send_Buffer[5] = 0x00;
 
