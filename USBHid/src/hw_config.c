@@ -127,17 +127,17 @@ void Set_USBClock(void)
 *******************************************************************************/
 void GPIO_AINConfig(void)
 {
-  GPIO_InitTypeDef GPIO_InitStructure;
+  //GPIO_InitTypeDef GPIO_InitStructure;
 
   /* Enable all GPIOs Clock*/
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_ALLGPIO, ENABLE);
+  //RCC_APB2PeriphClockCmd(RCC_APB2Periph_ALLGPIO, ENABLE);
 
   /* Configure all GPIO port pins in Analog Input mode (floating input trigger OFF) */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+  //GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;
+  //GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
   //GPIO_Init(GPIOA, &GPIO_InitStructure); // Some GPIOA pins are used for JTAG and USB
   //GPIO_Init(GPIOB, &GPIO_InitStructure);
-  GPIO_Init(GPIOC, &GPIO_InitStructure);
+  //GPIO_Init(GPIOC, &GPIO_InitStructure);
   //GPIO_Init(GPIOD, &GPIO_InitStructure);
   //GPIO_Init(GPIOE, &GPIO_InitStructure);
 
