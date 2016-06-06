@@ -13,6 +13,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define WHITE_LED_PIN GPIO_Pin_15
+#define YELLOW_LED_PIN GPIO_Pin_3
+
 #define FLASH_RANDOM_POOL 0x0801FC00
 #define FLASH_SIGN 0x01010101
 #define PASSWORD_LEN 25
@@ -24,6 +27,7 @@ unsigned char password_base[PASSWORD_LEN];
 unsigned char write_buf[1024];
 unsigned int  password_mask = 0x00;
 unsigned int  not_enter = 1;
+unsigned int  mode_2 = 1;
 
 volatile int btn = 0;
 
@@ -37,17 +41,18 @@ void 				send_array(unsigned char *array, unsigned int size);
 void 				get_password(int num);
 
 void TIM3_IRQHandler(void) {
-	GPIOC->ODR ^= GPIO_Pin_13;
-	GPIOA->BSRR = GPIO_Pin_4;
+	GPIOA->BSRR = WHITE_LED_PIN;
+	if (mode_2 == 0) GPIOB->BSRR = YELLOW_LED_PIN; else GPIOB->BRR = YELLOW_LED_PIN;
 	TIM_ClearFlag(TIM3, TIM_FLAG_Update);
 }
 
 int main(void) {
 	int i;
+	for (i=0; i<5000000; i++);
 	
 	FLASH->KEYR = 0x45670123;
 	FLASH->KEYR = 0xCDEF89AB;
-	
+	 	
   Set_System();
 	System_Init();
   USB_Interrupts_Config();
@@ -56,10 +61,18 @@ int main(void) {
 	SysTick_Config(0xFFF);
 	flash_init();
 	
-	if ((GPIOA->IDR & GPIO_Pin_2)  == 0) {
-		GPIOA->BRR = GPIO_Pin_4;
+	if (((GPIOB->IDR & GPIO_Pin_12) == 0) && ((GPIOB->IDR & GPIO_Pin_4) == 0)) {
+		flash_erase(FLASH_RANDOM_POOL);
+		while (1) {
+			GPIOB->ODR ^= YELLOW_LED_PIN;
+			for (i=0; i<1000000; i++);
+		}
+	}
+	
+	if ((GPIOB->IDR & GPIO_Pin_12) == 0) {
+		GPIOA->BRR = WHITE_LED_PIN;
 		not_enter = 0;
-	  while ((GPIOA->IDR & GPIO_Pin_2)  == 0) __NOP();	
+	  while ((GPIOB->IDR & GPIO_Pin_12)  == 0) __NOP();	
 	}
 	
 	TIM3_Init();
@@ -68,75 +81,61 @@ int main(void) {
   {
     if (bDeviceState == CONFIGURED) {
 			if (btn == 0) {
-				if ((GPIOA->IDR & GPIO_Pin_2)  == 0) btn = 1;
-				if ((GPIOA->IDR & GPIO_Pin_6)  == 0) btn = 2;
-				if ((GPIOA->IDR & GPIO_Pin_8)  == 0) btn = 3;
-				//if ((GPIOA->IDR & GPIO_Pin_12) == 0) btn = 4;
-				if ((GPIOB->IDR & GPIO_Pin_5)  == 0) btn = 5;
-				if ((GPIOB->IDR & GPIO_Pin_10) == 0) btn = 6;
+				if ((GPIOB->IDR & GPIO_Pin_4)  == 0) btn = 1;
+				if ((GPIOB->IDR & GPIO_Pin_12) == 0) btn = 2;
+				if ((GPIOB->IDR & GPIO_Pin_8)  == 0) btn = 3;
+				if ((GPIOB->IDR & GPIO_Pin_9)  == 0) btn = 4;
+				if ((GPIOB->IDR & GPIO_Pin_2)  == 0) btn = 5;
+				if ((GPIOB->IDR & GPIO_Pin_11) == 0) btn = 6;
+				
 				if (btn != 0) {
+					if (btn == 1) {
+						if (mode_2 == 0) {
+							mode_2 = 1; 
+						} else {
+							mode_2 = 0;
+						}
+					} else {
+						get_password(btn);
+						send_array(password_base, PASSWORD_LEN);
+					}
+					
 					TIM3->CNT = 0;
-					GPIOA->BRR = GPIO_Pin_4;
+					GPIOA->BRR = WHITE_LED_PIN;
 					
-					get_password(btn);
-					send_array(password_base, PASSWORD_LEN);
-					
-//					switch (btn) {
-//						case 1:
-//							get_password(0);
-//							send_array(password_base, PASSWORD_LEN);
-//							break;
-//						case 2:
-//							get_password(0);
-//							send_array(password_base, PASSWORD_LEN);
-//							break;
-//						case 3:
-//							
-//							break;
-//						case 4:
-//							
-//							break;
-//						case 5:
-//							
-//							break;
-//						case 6:
-//							
-//							break;
-//					}
 					for (i=0; i<5000000; i++);
 					btn = 0;
 				}
 			}
-    }
+    } else {
+			TIM3->CNT = 0;
+			GPIOA->BRR = WHITE_LED_PIN;
+			for (i=0; i<5000000; i++);
+		}
   }
 }
 
 void System_Init(void) {
 	GPIO_InitTypeDef xIn;
 	
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_GPIOA, ENABLE);
-
-  xIn.GPIO_Pin = GPIO_Pin_2 | GPIO_Pin_6 | GPIO_Pin_8;
-  xIn.GPIO_Speed = GPIO_Speed_10MHz;
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
+	
+  xIn.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_9 | GPIO_Pin_8 | GPIO_Pin_12 | GPIO_Pin_11 | GPIO_Pin_2;
+  xIn.GPIO_Speed = GPIO_Speed_50MHz;
   xIn.GPIO_Mode = GPIO_Mode_IPU;
-  GPIO_Init(GPIOA, &xIn);
-	xIn.GPIO_Mode = GPIO_Mode_IPU;
-  xIn.GPIO_Pin = GPIO_Pin_5 | GPIO_Pin_10;
   GPIO_Init(GPIOB, &xIn);
 	
-  xIn.GPIO_Pin =  GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_7 | GPIO_Pin_9 | GPIO_Pin_15;
+  xIn.GPIO_Pin =  WHITE_LED_PIN;
   xIn.GPIO_Mode = GPIO_Mode_Out_PP;
   GPIO_Init(GPIOA, &xIn);
-	GPIOA->BRR = GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_7 | GPIO_Pin_9 | GPIO_Pin_15; 
+	GPIO_ResetBits(GPIOA, WHITE_LED_PIN);
 	
-  xIn.GPIO_Pin = GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_6 | GPIO_Pin_11;
+  xIn.GPIO_Pin = YELLOW_LED_PIN;
 	xIn.GPIO_Mode = GPIO_Mode_Out_PP;
   GPIO_Init(GPIOB, &xIn);
-	GPIOB->BRR = GPIO_Pin_3 | GPIO_Pin_4 | GPIO_Pin_6 | GPIO_Pin_11;
-	
-	xIn.GPIO_Pin = GPIO_Pin_13;
-	xIn.GPIO_Mode = GPIO_Mode_Out_PP;
-  GPIO_Init(GPIOC, &xIn);
+	GPIO_ResetBits(GPIOB, YELLOW_LED_PIN);
 }
 
 void send_key(int mod, int key) {
@@ -149,12 +148,14 @@ void send_key(int mod, int key) {
 }
 
 void send_array(unsigned char *array, unsigned int size) {
-	int i, j, pmask, smask;
+	int i, pmask, smask;
 	for (i=0; i<size; i++) {
 		pmask = i % 32;
-		smask = (((password_mask >> pmask) & 0x01) == 1) ? 0x02 : 0;
-		
-		send_key(smask, array[i]);
+		if (mode_2 == 1) 
+			smask = (((password_mask >> pmask) & 0x01) == 1) ? (array[i] < 0x1E ? 0x02 : 0) : 0;
+		else 
+			smask = (((password_mask >> pmask) & 0x01) == 1) ? 0x02 : 0;
+		send_key(smask, (mode_2 == 1) ? array[i] : (0x27+0x04)-array[i]);
 		send_key(0, 0);
 	}
 	
@@ -241,14 +242,14 @@ int flash_init(void) {
 			i++;
 			if (i >= 1024) break;
 		}
-		GPIOA->ODR ^= GPIO_Pin_4;
+		GPIOA->ODR ^= WHITE_LED_PIN;
 		if ((rand()/1111) == 0) for (j=0; j<(50); j++) __NOP();
 	}
 	
 	flash_write(write_buf, 0x0801FC00, 1024);
 	
 	while (1) {
-		GPIOA->ODR ^= GPIO_Pin_4;
+		GPIOA->ODR ^= WHITE_LED_PIN;
 		for (i=0; i<1000000; i++);
 	}
 }

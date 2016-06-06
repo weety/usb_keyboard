@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\OBJ\usb_keyboard.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\OBJ\usb_keyboard.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Fri May 06 16:52:05 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Jun 06 17:58:59 2016
 <BR><P>
 <H3>Maximum Stack Usage =        176 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -51,9 +51,9 @@ Function Pointers
  <LI><a href="#[7]">Joystick_Data_Setup</a> from usb_prop.o(.text) referenced 2 times from usb_prop.o(.data)
  <LI><a href="#[b]">Joystick_GetConfigDescriptor</a> from usb_prop.o(.text) referenced 2 times from usb_prop.o(.data)
  <LI><a href="#[a]">Joystick_GetDeviceDescriptor</a> from usb_prop.o(.text) referenced 2 times from usb_prop.o(.data)
- <LI><a href="#[9f]">Joystick_GetHIDDescriptor</a> from usb_prop.o(.text) referenced from usb_prop.o(.text)
- <LI><a href="#[a2]">Joystick_GetProtocolValue</a> from usb_prop.o(.text) referenced from usb_prop.o(.text)
- <LI><a href="#[a1]">Joystick_GetReportDescriptor</a> from usb_prop.o(.text) referenced from usb_prop.o(.text)
+ <LI><a href="#[9a]">Joystick_GetHIDDescriptor</a> from usb_prop.o(.text) referenced from usb_prop.o(.text)
+ <LI><a href="#[9d]">Joystick_GetProtocolValue</a> from usb_prop.o(.text) referenced from usb_prop.o(.text)
+ <LI><a href="#[9c]">Joystick_GetReportDescriptor</a> from usb_prop.o(.text) referenced from usb_prop.o(.text)
  <LI><a href="#[c]">Joystick_GetStringDescriptor</a> from usb_prop.o(.text) referenced 2 times from usb_prop.o(.data)
  <LI><a href="#[9]">Joystick_Get_Interface_Setting</a> from usb_prop.o(.text) referenced 2 times from usb_prop.o(.data)
  <LI><a href="#[8]">Joystick_NoData_Setup</a> from usb_prop.o(.text) referenced 2 times from usb_prop.o(.data)
@@ -255,20 +255,20 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
 </UL>
-<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Leave_LowPowerMode
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Leave_LowPowerMode
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(.text)
 </UL>
 <P><STRONG><a name="[bb]"></a>SystemCoreClockUpdate</STRONG> (Thumb, 86 bytes, Stack size 8 bytes, system_stm32f10x.o(.text), UNUSED)
 
-<P><STRONG><a name="[8a]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Interrupts_Config
+<P><STRONG><a name="[88]"></a>NVIC_PriorityGroupConfig</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, misc.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Interrupts_Config
 </UL>
 
-<P><STRONG><a name="[8b]"></a>NVIC_Init</STRONG> (Thumb, 94 bytes, Stack size 12 bytes, misc.o(.text))
+<P><STRONG><a name="[89]"></a>NVIC_Init</STRONG> (Thumb, 94 bytes, Stack size 12 bytes, misc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Interrupts_Config
+<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Interrupts_Config
 </UL>
 
 <P><STRONG><a name="[bc]"></a>NVIC_SetVectorTable</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, misc.o(.text), UNUSED)
@@ -279,7 +279,7 @@ Global Symbols
 
 <P><STRONG><a name="[bf]"></a>EXTI_DeInit</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f10x_exti.o(.text), UNUSED)
 
-<P><STRONG><a name="[85]"></a>EXTI_Init</STRONG> (Thumb, 108 bytes, Stack size 12 bytes, stm32f10x_exti.o(.text))
+<P><STRONG><a name="[83]"></a>EXTI_Init</STRONG> (Thumb, 108 bytes, Stack size 12 bytes, stm32f10x_exti.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = EXTI_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_System
@@ -295,7 +295,7 @@ Global Symbols
 
 <P><STRONG><a name="[c4]"></a>EXTI_GetITStatus</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, stm32f10x_exti.o(.text), UNUSED)
 
-<P><STRONG><a name="[84]"></a>EXTI_ClearITPendingBit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_exti.o(.text))
+<P><STRONG><a name="[82]"></a>EXTI_ClearITPendingBit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_exti.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_System
 <LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBWakeUp_IRQHandler
 </UL>
@@ -308,12 +308,11 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphResetCmd
 </UL>
 
-<P><STRONG><a name="[83]"></a>GPIO_Init</STRONG> (Thumb, 156 bytes, Stack size 20 bytes, stm32f10x_gpio.o(.text))
+<P><STRONG><a name="[a7]"></a>GPIO_Init</STRONG> (Thumb, 156 bytes, Stack size 20 bytes, stm32f10x_gpio.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_System
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_init
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_init
 </UL>
 
 <P><STRONG><a name="[c5]"></a>GPIO_StructInit</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
@@ -326,25 +325,27 @@ Global Symbols
 
 <P><STRONG><a name="[c9]"></a>GPIO_ReadOutputData</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
 
-<P><STRONG><a name="[8e]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Cable_Config
+<P><STRONG><a name="[ca]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
+
+<P><STRONG><a name="[ad]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 </UL>
 
-<P><STRONG><a name="[8d]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Cable_Config
+<P><STRONG><a name="[cb]"></a>GPIO_WriteBit</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
+
+<P><STRONG><a name="[cc]"></a>GPIO_Write</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
+
+<P><STRONG><a name="[cd]"></a>GPIO_PinLockConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
+
+<P><STRONG><a name="[ce]"></a>GPIO_EventOutputConfig</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, stm32f10x_gpio.o(.text), UNUSED)
+
+<P><STRONG><a name="[cf]"></a>GPIO_EventOutputCmd</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
+
+<P><STRONG><a name="[ac]"></a>GPIO_PinRemapConfig</STRONG> (Thumb, 82 bytes, Stack size 20 bytes, stm32f10x_gpio.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_PinRemapConfig
 </UL>
-
-<P><STRONG><a name="[ca]"></a>GPIO_WriteBit</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
-
-<P><STRONG><a name="[cb]"></a>GPIO_Write</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
-
-<P><STRONG><a name="[cc]"></a>GPIO_PinLockConfig</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
-
-<P><STRONG><a name="[cd]"></a>GPIO_EventOutputConfig</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, stm32f10x_gpio.o(.text), UNUSED)
-
-<P><STRONG><a name="[ce]"></a>GPIO_EventOutputCmd</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_gpio.o(.text), UNUSED)
-
-<P><STRONG><a name="[cf]"></a>GPIO_PinRemapConfig</STRONG> (Thumb, 82 bytes, Stack size 20 bytes, stm32f10x_gpio.o(.text), UNUSED)
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+</UL>
 
 <P><STRONG><a name="[d0]"></a>GPIO_EXTILineConfig</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, stm32f10x_gpio.o(.text), UNUSED)
 
@@ -382,8 +383,8 @@ Global Symbols
 
 <P><STRONG><a name="[dd]"></a>RCC_ITConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text), UNUSED)
 
-<P><STRONG><a name="[87]"></a>RCC_USBCLKConfig</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_USBClock
+<P><STRONG><a name="[85]"></a>RCC_USBCLKConfig</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_USBClock
 </UL>
 
 <P><STRONG><a name="[de]"></a>RCC_ADCCLKConfig</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text), UNUSED)
@@ -400,13 +401,12 @@ Global Symbols
 
 <P><STRONG><a name="[e4]"></a>RCC_AHBPeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text), UNUSED)
 
-<P><STRONG><a name="[82]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_System
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<P><STRONG><a name="[ab]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
 </UL>
 
 <P><STRONG><a name="[81]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_rcc.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_USBClock
+<BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_USBClock
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_System
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_Init
 </UL>
@@ -650,7 +650,7 @@ Global Symbols
 
 <P><STRONG><a name="[12e]"></a>TIM_GetFlagStatus</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text), UNUSED)
 
-<P><STRONG><a name="[a6]"></a>TIM_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text))
+<P><STRONG><a name="[a2]"></a>TIM_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_tim.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_Init
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
 </UL>
@@ -709,12 +709,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NoData_Setup0
 </UL>
 
-<P><STRONG><a name="[a0]"></a>Standard_GetDescriptorData</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_core.o(.text))
+<P><STRONG><a name="[9b]"></a>Standard_GetDescriptorData</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_core.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_GetStringDescriptor
 <LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_GetConfigDescriptor
 <LI><a href="#[a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_GetDeviceDescriptor
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_GetReportDescriptor
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_GetHIDDescriptor
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_GetReportDescriptor
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_GetHIDDescriptor
 </UL>
 
 <P><STRONG><a name="[71]"></a>Post0_Process</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, usb_core.o(.text))
@@ -780,7 +780,7 @@ Global Symbols
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;In0_Process
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup0_Process
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
 </UL>
 
 <P><STRONG><a name="[131]"></a>CTR_HP</STRONG> (Thumb, 104 bytes, Stack size 24 bytes, usb_int.o(.text), UNUSED)
@@ -812,7 +812,7 @@ Global Symbols
 
 <P><STRONG><a name="[138]"></a>GetDADDR</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, usb_regs.o(.text), UNUSED)
 
-<P><STRONG><a name="[99]"></a>SetBTABLE</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, usb_regs.o(.text))
+<P><STRONG><a name="[94]"></a>SetBTABLE</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, usb_regs.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Reset
 </UL>
 
@@ -824,7 +824,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetDouBleBuffEPStall
 </UL>
 
-<P><STRONG><a name="[9a]"></a>SetEPType</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_regs.o(.text))
+<P><STRONG><a name="[95]"></a>SetEPType</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_regs.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Reset
 </UL>
 
@@ -835,7 +835,7 @@ Global Symbols
 <LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Reset
 </UL>
 
-<P><STRONG><a name="[9e]"></a>SetEPRxStatus</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, usb_regs.o(.text))
+<P><STRONG><a name="[99]"></a>SetEPRxStatus</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, usb_regs.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Reset
 </UL>
 
@@ -847,12 +847,12 @@ Global Symbols
 
 <P><STRONG><a name="[13d]"></a>GetEPRxStatus</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, usb_regs.o(.text), UNUSED)
 
-<P><STRONG><a name="[90]"></a>SetEPTxValid</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, usb_regs.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Send
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_key
+<P><STRONG><a name="[8b]"></a>SetEPTxValid</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, usb_regs.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Send
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_key
 </UL>
 
-<P><STRONG><a name="[93]"></a>SetEPRxValid</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, usb_regs.o(.text))
+<P><STRONG><a name="[8e]"></a>SetEPRxValid</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, usb_regs.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EP1_OUT_Callback
 <LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Reset
 </UL>
@@ -861,7 +861,7 @@ Global Symbols
 
 <P><STRONG><a name="[13f]"></a>ClearEP_KIND</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, usb_regs.o(.text), UNUSED)
 
-<P><STRONG><a name="[9d]"></a>Clear_Status_Out</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, usb_regs.o(.text))
+<P><STRONG><a name="[98]"></a>Clear_Status_Out</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, usb_regs.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Reset
 </UL>
 
@@ -895,11 +895,11 @@ Global Symbols
 
 <P><STRONG><a name="[14a]"></a>GetEPAddress</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, usb_regs.o(.text), UNUSED)
 
-<P><STRONG><a name="[9c]"></a>SetEPTxAddr</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_regs.o(.text))
+<P><STRONG><a name="[97]"></a>SetEPTxAddr</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_regs.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Reset
 </UL>
 
-<P><STRONG><a name="[9b]"></a>SetEPRxAddr</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, usb_regs.o(.text))
+<P><STRONG><a name="[96]"></a>SetEPRxAddr</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, usb_regs.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Reset
 </UL>
 
@@ -965,7 +965,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Setup0_Process
 </UL>
 
-<P><STRONG><a name="[98]"></a>USB_SIL_Init</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_sil.o(.text))
+<P><STRONG><a name="[93]"></a>USB_SIL_Init</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_sil.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_init
 </UL>
 
@@ -976,8 +976,8 @@ Global Symbols
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxCount
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEPTxAddr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Send
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_key
+<BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_Send
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_key
 </UL>
 
 <P><STRONG><a name="[7e]"></a>USB_SIL_Read</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, usb_sil.o(.text), UNUSED)
@@ -986,23 +986,21 @@ Global Symbols
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEPRxAddr
 </UL>
 
-<P><STRONG><a name="[80]"></a>Set_System</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, hw_config.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Set_System &rArr; GPIO_Init
+<P><STRONG><a name="[80]"></a>Set_System</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, hw_config.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Set_System &rArr; EXTI_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_Init
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[86]"></a>Set_USBClock</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, hw_config.o(.text))
+<P><STRONG><a name="[84]"></a>Set_USBClock</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, hw_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Set_USBClock
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_USBCLKConfig
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_USBCLKConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1011,42 +1009,39 @@ Global Symbols
 
 <P><STRONG><a name="[15b]"></a>Enter_LowPowerMode</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, hw_config.o(.text), UNUSED)
 
-<P><STRONG><a name="[88]"></a>Leave_LowPowerMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, hw_config.o(.text))
+<P><STRONG><a name="[86]"></a>Leave_LowPowerMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, hw_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = Leave_LowPowerMode &rArr; SystemInit &rArr; SetSysClockTo72
 </UL>
 <BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume_Init
+<BR>[Called By]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume_Init
 </UL>
 
-<P><STRONG><a name="[89]"></a>USB_Interrupts_Config</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, hw_config.o(.text))
+<P><STRONG><a name="[87]"></a>USB_Interrupts_Config</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, hw_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = USB_Interrupts_Config &rArr; NVIC_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
+<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8c]"></a>USB_Cable_Config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, hw_config.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-</UL>
-<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerOff
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerOn
+<P><STRONG><a name="[9f]"></a>USB_Cable_Config</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, hw_config.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerOff
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerOn
 </UL>
 
 <P><STRONG><a name="[15c]"></a>JoyState</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, hw_config.o(.text), UNUSED)
 
-<P><STRONG><a name="[8f]"></a>Joystick_Send</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, hw_config.o(.text), UNUSED)
+<P><STRONG><a name="[8a]"></a>Joystick_Send</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, hw_config.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SIL_Write
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxValid
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxValid
 </UL>
 
-<P><STRONG><a name="[91]"></a>Get_SerialNum</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, hw_config.o(.text))
+<P><STRONG><a name="[8c]"></a>Get_SerialNum</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, hw_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Get_SerialNum &rArr; IntToUnicode
 </UL>
-<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntToUnicode
+<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntToUnicode
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_init
 </UL>
@@ -1058,17 +1053,17 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = EP1_OUT_Callback
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEPRxCount
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxValid
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxValid
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PMAToUserBufferCopy
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_istr.o(.data)
 </UL>
-<P><STRONG><a name="[94]"></a>USB_Istr</STRONG> (Thumb, 302 bytes, Stack size 56 bytes, usb_istr.o(.text))
+<P><STRONG><a name="[8f]"></a>USB_Istr</STRONG> (Thumb, 302 bytes, Stack size 56 bytes, usb_istr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = USB_Istr &rArr; CTR_LP &rArr; Setup0_Process &rArr; Data_Setup0 &rArr; DataStageIn &rArr; UserToPMABufferCopy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CTR_LP
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Suspend
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume
+<LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Suspend
+<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_LP_CAN1_RX0_IRQHandler
 </UL>
@@ -1076,22 +1071,22 @@ Global Symbols
 <P><STRONG><a name="[3]"></a>Joystick_init</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, usb_prop.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Joystick_init &rArr; Get_SerialNum &rArr; IntToUnicode
 </UL>
-<BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_SerialNum
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SIL_Init
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerOn
+<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_SerialNum
+<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SIL_Init
+<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PowerOn
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
 <P><STRONG><a name="[4]"></a>Joystick_Reset</STRONG> (Thumb, 158 bytes, Stack size 8 bytes, usb_prop.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Joystick_Reset &rArr; SetDeviceAddress
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxAddr
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxAddr
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Clear_Status_Out
-<LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxValid
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxStatus
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPType
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetBTABLE
+<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxAddr
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxAddr
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Clear_Status_Out
+<LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxValid
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxStatus
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPType
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetBTABLE
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxStatus
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxCount
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPRxCount
@@ -1111,16 +1106,16 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>Joystick_Status_Out</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, usb_prop.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
-<P><STRONG><a name="[a2]"></a>Joystick_GetProtocolValue</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usb_prop.o(.text))
+<P><STRONG><a name="[9d]"></a>Joystick_GetProtocolValue</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usb_prop.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.text)
 </UL>
-<P><STRONG><a name="[9f]"></a>Joystick_GetHIDDescriptor</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, usb_prop.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
+<P><STRONG><a name="[9a]"></a>Joystick_GetHIDDescriptor</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, usb_prop.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.text)
 </UL>
-<P><STRONG><a name="[a1]"></a>Joystick_GetReportDescriptor</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, usb_prop.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
+<P><STRONG><a name="[9c]"></a>Joystick_GetReportDescriptor</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, usb_prop.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.text)
 </UL>
@@ -1129,65 +1124,65 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
-<P><STRONG><a name="[a3]"></a>Joystick_SetProtocol</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, usb_prop.o(.text))
+<P><STRONG><a name="[9e]"></a>Joystick_SetProtocol</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, usb_prop.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_NoData_Setup
 </UL>
 
 <P><STRONG><a name="[8]"></a>Joystick_NoData_Setup</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usb_prop.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_SetProtocol
+<BR><BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_SetProtocol
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
 <P><STRONG><a name="[a]"></a>Joystick_GetDeviceDescriptor</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, usb_prop.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
+<BR><BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
 <P><STRONG><a name="[b]"></a>Joystick_GetConfigDescriptor</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, usb_prop.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
+<BR><BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
 <P><STRONG><a name="[c]"></a>Joystick_GetStringDescriptor</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, usb_prop.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
+<BR><BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Standard_GetDescriptorData
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
 <P><STRONG><a name="[9]"></a>Joystick_Get_Interface_Setting</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, usb_prop.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> usb_prop.o(.data)
 </UL>
-<P><STRONG><a name="[97]"></a>PowerOn</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, usb_pwr.o(.text))
+<P><STRONG><a name="[92]"></a>PowerOn</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, usb_pwr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = PowerOn
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Cable_Config
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Cable_Config
 </UL>
 <BR>[Called By]<UL><LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Joystick_init
 </UL>
 
-<P><STRONG><a name="[a4]"></a>PowerOff</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, usb_pwr.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Cable_Config
+<P><STRONG><a name="[a0]"></a>PowerOff</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, usb_pwr.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Cable_Config
 </UL>
 
-<P><STRONG><a name="[96]"></a>Suspend</STRONG> (Thumb, 176 bytes, Stack size 24 bytes, usb_pwr.o(.text))
+<P><STRONG><a name="[91]"></a>Suspend</STRONG> (Thumb, 176 bytes, Stack size 24 bytes, usb_pwr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Suspend
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
 </UL>
 
-<P><STRONG><a name="[a5]"></a>Resume_Init</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, usb_pwr.o(.text))
+<P><STRONG><a name="[a1]"></a>Resume_Init</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, usb_pwr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Resume_Init &rArr; Leave_LowPowerMode &rArr; SystemInit &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Leave_LowPowerMode
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Leave_LowPowerMode
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume
+<BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume
 </UL>
 
-<P><STRONG><a name="[95]"></a>Resume</STRONG> (Thumb, 140 bytes, Stack size 24 bytes, usb_pwr.o(.text))
+<P><STRONG><a name="[90]"></a>Resume</STRONG> (Thumb, 140 bytes, Stack size 24 bytes, usb_pwr.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Resume &rArr; Resume_Init &rArr; Leave_LowPowerMode &rArr; SystemInit &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume_Init
+<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Resume_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
+<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
 </UL>
 
 <P><STRONG><a name="[10]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32_it.o(.text))
@@ -1236,7 +1231,7 @@ Global Symbols
 <P><STRONG><a name="[2d]"></a>USB_LP_CAN1_RX0_IRQHandler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32_it.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = USB_LP_CAN1_RX0_IRQHandler &rArr; USB_Istr &rArr; CTR_LP &rArr; Setup0_Process &rArr; Data_Setup0 &rArr; DataStageIn &rArr; UserToPMABufferCopy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
+<BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Istr
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
@@ -1244,28 +1239,28 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[43]"></a>USBWakeUp_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32_it.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
+<BR><BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[36]"></a>TIM3_IRQHandler</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(.text))
-<BR><BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearFlag
+<P><STRONG><a name="[36]"></a>TIM3_IRQHandler</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, main.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearFlag
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[a7]"></a>send_key</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[a3]"></a>send_key</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = send_key &rArr; USB_SIL_Write &rArr; UserToPMABufferCopy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SIL_Write
-<LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxValid
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetEPTxValid
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_array
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_array
 </UL>
 
-<P><STRONG><a name="[a8]"></a>send_array</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, main.o(.text))
+<P><STRONG><a name="[a4]"></a>send_array</STRONG> (Thumb, 116 bytes, Stack size 24 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = send_array &rArr; send_key &rArr; USB_SIL_Write &rArr; UserToPMABufferCopy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_key
+<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_key
 </UL>
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1278,55 +1273,59 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ac]"></a>flash_write</STRONG> (Thumb, 70 bytes, Stack size 20 bytes, main.o(.text))
+<P><STRONG><a name="[a6]"></a>flash_erase</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, main.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_init
+</UL>
+
+<P><STRONG><a name="[a9]"></a>flash_write</STRONG> (Thumb, 70 bytes, Stack size 20 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = flash_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_init
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_init
 </UL>
 
-<P><STRONG><a name="[aa]"></a>flash_erase</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, main.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_init
-</UL>
-
-<P><STRONG><a name="[a9]"></a>flash_init</STRONG> (Thumb, 218 bytes, Stack size 40 bytes, main.o(.text))
+<P><STRONG><a name="[a5]"></a>flash_init</STRONG> (Thumb, 220 bytes, Stack size 40 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = flash_init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_erase
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_write
+<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_write
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_erase
 </UL>
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ad]"></a>System_Init</STRONG> (Thumb, 138 bytes, Stack size 24 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = System_Init &rArr; GPIO_Init
+<P><STRONG><a name="[aa]"></a>System_Init</STRONG> (Thumb, 120 bytes, Stack size 24 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = System_Init &rArr; GPIO_PinRemapConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_PinRemapConfig
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[44]"></a>main</STRONG> (Thumb, 224 bytes, Stack size 0 bytes, main.o(.text))
+<P><STRONG><a name="[44]"></a>main</STRONG> (Thumb, 386 bytes, Stack size 0 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = main &rArr; flash_init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Interrupts_Config
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_USBClock
+<BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Interrupts_Config
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_USBClock
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_System
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_Init
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_Init
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_init
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;System_Init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_erase
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_password
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_array
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_array
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
 <P><STRONG><a name="[af]"></a>TIM3_Init</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, timer3.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = TIM3_Init &rArr; TIM_TimeBaseInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearFlag
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearFlag
 <LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
@@ -1335,8 +1334,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ab]"></a>rand</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rand.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_init
+<P><STRONG><a name="[a8]"></a>rand</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, rand.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;flash_init
 </UL>
 
 <P><STRONG><a name="[15e]"></a>srand</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, rand.o(.text), UNUSED)
@@ -1421,10 +1420,10 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Out0_Process
 </UL>
 
-<P><STRONG><a name="[92]"></a>IntToUnicode</STRONG> (Thumb, 54 bytes, Stack size 20 bytes, hw_config.o(.text))
+<P><STRONG><a name="[8d]"></a>IntToUnicode</STRONG> (Thumb, 54 bytes, Stack size 20 bytes, hw_config.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = IntToUnicode
 </UL>
-<BR>[Called By]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_SerialNum
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_SerialNum
 </UL>
 <P>
 <H3>
