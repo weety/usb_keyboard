@@ -105,7 +105,7 @@ const u8 Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
  0x03,          /*bmAttributes: Interrupt endpoint*/
  0x08,          /*wMaxPacketSize: 8 Byte max */
  0x00,
- 0x20,          /*bInterval: Polling Interval (32 ms)*/
+ 0x08,          /*bInterval: Polling Interval (8 ms)*/
 
  //以下为输出端点1描述符
  /* 34 */
@@ -115,7 +115,7 @@ const u8 Joystick_ConfigDescriptor[JOYSTICK_SIZ_CONFIG_DESC] =
  0x03,          /*bmAttributes: Interrupt endpoint*/
  0x08,          /*wMaxPacketSize: 8 Byte max */
  0x00,
- 0x20,          /*bInterval: Polling Interval (32 ms)*/
+ 0x08,          /*bInterval: Polling Interval (8 ms)*/
 /* 41 */
 }; /* MOUSE_ConfigDescriptor */
 

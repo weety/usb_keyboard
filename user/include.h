@@ -20,9 +20,7 @@ typedef double         FP64;                     /* Double precision floating po
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"
 #include "usb_type.h"
-#include "I2C.h"
 #include "Timer3.h"
-#include "adxl.h"
 
 
 /*#define RCC_APB2Periph_ALLGPIO      (RCC_APB2Periph_GPIOA \

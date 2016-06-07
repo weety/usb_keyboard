@@ -41,15 +41,18 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-INT32U key_count = 0;
+//INT32U key_count = 0;
 	/*保存当前按键端口状态*/
-__IO INT8U key1 = 0xe0;
+//__IO INT8U key1 = 0xe0;
 	/*保存上一状态按键端口状态*/
-__IO INT8U key2 = 0xe0;
+//__IO INT8U key2 = 0xe0;
 /* Extern variables ----------------------------------------------------------*/
-extern INT8U flag;
-extern INT8U key_flag;
-extern ADXL345_TYPE ADXL345_data;
+//extern INT8U flag;
+//extern INT8U key_flag;
+//extern ADXL345_TYPE ADXL345_data;
+
+volatile int counter = 0;
+
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -230,48 +233,66 @@ void USBWakeUp_IRQHandler(void)
 * Output         : None
 * Return         : None
 *******************************************************************************/
-void TIM3_IRQHandler(void)
-{
-	/*保存当前按键端口状态*/
-//  static	__IO INT8U key1 = 0xf0;
-	/*保存上一状态按键端口状态*/
-//	static	__IO INT8U key2 = 0xf0;
+//void TIM3_IRQHandler(void)
+//{
+//	counter++;
+//	if (counter >= 3) counter = 0;
+//	GPIOB->ODR |= (GPIO_Pin_3 | GPIO_Pin_4);
+//	GPIOA->ODR |= (GPIO_Pin_4);
+//	
+//	switch (counter) {
+//		case 0:
+//			GPIOA->ODR &= ~(GPIO_Pin_4);
+//			break;
+//		case 1:
+//			GPIOB->ODR &= ~(GPIO_Pin_3);
+//			break;
+//		case 2:
+//			GPIOB->ODR &= ~(GPIO_Pin_4);
+//			break;
+//	}
+
 	
-	INT16U key = 0;
-	
-	/*连续读取陀螺仪的数值*/
-	//ADXL345_MultRead(&ADXL345_data);
-	
-	/*读按键端口值*/
-	key = GPIO_ReadInputData(GPIOB);
-	
-	//key1 = (INT8U) (key >> 8);
-	key1 = (INT8U)key;
-	
-	key1 &= 0xe0;
-	
-	
-	/*表示按键发现了改变*/
-	if(key1 != key2)
-	{
-		key_count++; //相当于延时
-		if(key_count >= 0x02)
-		{
-			key2 = key1;
-			key_flag = key2;
-		}
-	}
-	else
-	{
-		key_count = 0;
-	}
-	
-	/*设置标志*/
-	flag = 1;
+//	/*保存当前按键端口状态*/
+////  static	__IO INT8U key1 = 0xf0;
+//	/*保存上一状态按键端口状态*/
+////	static	__IO INT8U key2 = 0xf0;
+//	
+//	INT16U key = 0;
+//	
+//	/*连续读取陀螺仪的数值*/
+//	//ADXL345_MultRead(&ADXL345_data);
+//	
+//	/*读按键端口值*/
+//	key = GPIO_ReadInputData(GPIOB);
+//	
+//	//key1 = (INT8U) (key >> 8);
+//	key1 = (INT8U)key;
+//	
+//	key1 &= 0xe0;
+//	
+//	
+//	/*表示按键发现了改变*/
+//	if(key1 != key2)
+//	{
+//		key_count++; //相当于延时
+//		if(key_count >= 0x02)
+//		{
+//			key2 = key1;
+//			key_flag = key2;
+//		}
+//	}
+//	else
+//	{
+//		key_count = 0;
+//	}
+//	
+//	/*设置标志*/
+//	flag = 1;
 	
 	/*手动清数据更新中断标志*/
-	TIM_ClearFlag(TIM3, TIM_FLAG_Update);
-}
+//	TIM_ClearFlag(TIM3, TIM_FLAG_Update);
+//}
 
 /******************************************************************************/
 /*                 STM32 Peripherals Interrupt Handlers                   */

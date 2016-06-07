@@ -57,7 +57,7 @@ static void IntToUnicode (uint32_t value , uint8_t *pbuf , uint8_t len);
 *******************************************************************************/
 void Set_System(void)
 {
-   GPIO_InitTypeDef GPIO_InitStructure;
+//   GPIO_InitTypeDef GPIO_InitStructure;
   /*!< At this stage the microcontroller clock setting is already configured, 
        this is done through SystemInit() function which is called from startup
        file (startup_stm32xxx.s) before to branch to application main.
@@ -73,13 +73,13 @@ void Set_System(void)
 //  GPIO_AINConfig();    
      
   /* Enable the USB disconnect GPIO clock */
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIO_DISCONNECT, ENABLE);
+//  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIO_DISCONNECT, ENABLE);
 
   /* USB_DISCONNECT used as USB pull-up */
-  GPIO_InitStructure.GPIO_Pin = USB_DISCONNECT_PIN;
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_OD;
-  GPIO_Init(USB_DISCONNECT, &GPIO_InitStructure);
+//  GPIO_InitStructure.GPIO_Pin = USB_DISCONNECT_PIN;
+//  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+//  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_OD;
+//  GPIO_Init(USB_DISCONNECT, &GPIO_InitStructure);
 	
   /* Joystick buttons configuration *******************************************/
   /* Configure the Joystick buttons in GPIO mode */
@@ -127,17 +127,17 @@ void Set_USBClock(void)
 *******************************************************************************/
 void GPIO_AINConfig(void)
 {
-  GPIO_InitTypeDef GPIO_InitStructure;
+  //GPIO_InitTypeDef GPIO_InitStructure;
 
   /* Enable all GPIOs Clock*/
-  RCC_APB2PeriphClockCmd(RCC_APB2Periph_ALLGPIO, ENABLE);
+  //RCC_APB2PeriphClockCmd(RCC_APB2Periph_ALLGPIO, ENABLE);
 
   /* Configure all GPIO port pins in Analog Input mode (floating input trigger OFF) */
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
+  //GPIO_InitStructure.GPIO_Pin = GPIO_Pin_All;
+  //GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
   //GPIO_Init(GPIOA, &GPIO_InitStructure); // Some GPIOA pins are used for JTAG and USB
   //GPIO_Init(GPIOB, &GPIO_InitStructure);
-  GPIO_Init(GPIOC, &GPIO_InitStructure);
+  //GPIO_Init(GPIOC, &GPIO_InitStructure);
   //GPIO_Init(GPIOD, &GPIO_InitStructure);
   //GPIO_Init(GPIOE, &GPIO_InitStructure);
 
@@ -238,14 +238,14 @@ void USB_Interrupts_Config(void)
 void USB_Cable_Config (FunctionalState NewState)
 {
 
-  if (NewState != DISABLE)
-  {
-    GPIO_ResetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
-  }
-  else
-  {
-    GPIO_SetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
-  }
+//  if (NewState != DISABLE)
+//  {
+//    GPIO_ResetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
+//  }
+//  else
+//  {
+//    GPIO_SetBits(USB_DISCONNECT, USB_DISCONNECT_PIN);
+//  }
 
 }
 /*******************************************************************************
